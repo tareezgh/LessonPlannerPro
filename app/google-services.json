@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "736406906729",
+    "project_id": "lessonplannerpro",
+    "storage_bucket": "lessonplannerpro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736406906729:android:2fe1d86bef4aa99fed7ff8",
+        "android_client_info": {
+          "package_name": "com.example.lessonplannerpro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "736406906729-i210ucdmtoql9no83bd8r1s0r1d3lpr8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNHYRNsXQwZ6OXh4s2EfKEHcneq9svTtI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "736406906729-i210ucdmtoql9no83bd8r1s0r1d3lpr8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
