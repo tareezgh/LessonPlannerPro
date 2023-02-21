@@ -92,7 +92,6 @@ public class ItemsRecycleAdapter extends RecyclerView.Adapter<ItemsRecycleAdapte
 
             /****************************************** edit item ****************************************************/
 
-
             itemEditButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -151,6 +150,8 @@ public class ItemsRecycleAdapter extends RecyclerView.Adapter<ItemsRecycleAdapte
             student.setText("Student: " + lesson.getUserName());
         }
     }
+
+    /************************************************ called from receiver **********************************************************/
 
     public void UpdateLessonList() {
         Log.e( "TAGGGGGGG"," UpdateLessonList");

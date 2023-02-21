@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         registerReceiver(myReceiver, new IntentFilter("com.example.lessonplannerpro.CUSTOM_INTENT"));
 
         /************************************************ define service **********************************************************/
-
         if (!checkServiceRunning(MyForegroundService.class)) {
             Intent serviceIntent = new Intent(this, MyForegroundService.class);
             startForegroundService(serviceIntent);
@@ -53,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
+    /************************************************ unregister Receiver **********************************************************/
     @Override
     protected void onDestroy() {
         super.onDestroy();

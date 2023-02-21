@@ -45,7 +45,6 @@ public class AddLesson extends AppCompatDialogFragment {
     DatePickerDialog.OnDateSetListener onDateSetListener;
     TimePickerDialog.OnTimeSetListener onTimeSetListener;
 
-
     public interface AddLessonDialogListener {
         void addLesson(String subject, String topic, String date, String time);
     }
@@ -62,12 +61,11 @@ public class AddLesson extends AppCompatDialogFragment {
         subject = view.findViewById(R.id.subject);
         topic = view.findViewById(R.id.topic);
 
+        pickDate = view.findViewById(R.id.pickDate); // button
+        dateText = view.findViewById(R.id.textViewDate); // text
 
-        pickDate = view.findViewById(R.id.pickDate);
-        dateText = view.findViewById(R.id.textViewDate);
-
-        pickTime = view.findViewById(R.id.pickTime);
-        timeText = view.findViewById(R.id.textviewTime);
+        pickTime = view.findViewById(R.id.pickTime); // button
+        timeText = view.findViewById(R.id.textviewTime); // text
 
 
         builder.setView(view).setTitle("Add Lesson").setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -88,8 +86,7 @@ public class AddLesson extends AppCompatDialogFragment {
             }
         });
 
-/****************************************** date picker ****************************************************/
-
+/****************************************** date picker window ****************************************************/
 
         pickDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,11 +111,11 @@ public class AddLesson extends AppCompatDialogFragment {
                 c.set(Calendar.DAY_OF_MONTH, day);
 
                 String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
-                dateText.setText(currentDateString);
+                dateText.setText(currentDateString); // update text
             }
         };
 
-/****************************************** time picker ****************************************************/
+/****************************************** time picker window ****************************************************/
 
 
         pickTime.setOnClickListener(new View.OnClickListener() {
@@ -141,7 +138,7 @@ public class AddLesson extends AppCompatDialogFragment {
             public void onTimeSet(TimePicker timePicker, int hour, int minute) {
                 if (minute < 10) timeText.setText(hour + ":0" + minute);
                 else timeText.setText(hour + ":" + minute);
-            }
+            } // update text
         };
 
         return builder.create();

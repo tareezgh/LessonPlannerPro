@@ -56,7 +56,6 @@ public class LessonDetails extends AppCompatActivity implements AddLesson.AddLes
     public static boolean addedNewItem = false; // when add new lesson notify the teacher
 
 
-
     String chosenDate; // for menu option 2
 
     Context lessonDetails;
@@ -66,6 +65,8 @@ public class LessonDetails extends AppCompatActivity implements AddLesson.AddLes
 
     private final ArrayList<Lesson> lessonsList = new ArrayList<>();
     public static ArrayList<Lesson> existLesson = new ArrayList<>();
+
+    /****************************************** SP define ****************************************************/
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -112,8 +113,7 @@ public class LessonDetails extends AppCompatActivity implements AddLesson.AddLes
 
     /****************************************** Open dialog ****************************************************/
 
-
-    // open dialog
+    // open dialog onClick (xml)
     public void OpenAddLesson(View view) {
         AddLesson addLessonDialog = new AddLesson();
         addLessonDialog.show(getSupportFragmentManager(), "addLesson dialog");
@@ -121,7 +121,6 @@ public class LessonDetails extends AppCompatActivity implements AddLesson.AddLes
 
 
     /****************************************** GET lesson from firebase ****************************************************/
-
 
     public void getLessonsFromDB() {
         mDatabase.addValueEventListener(new ValueEventListener() {
@@ -144,7 +143,6 @@ public class LessonDetails extends AppCompatActivity implements AddLesson.AddLes
     }
 
     /****************************************** ADD lesson to firebase ****************************************************/
-
 
     @Override
     public void addLesson(String subject, String topic, String date, String time) {
@@ -188,7 +186,7 @@ public class LessonDetails extends AppCompatActivity implements AddLesson.AddLes
     }
 
 
-    /****************************************** nearest Lessons ****************************************************/
+    /****************************************** check nearest Lessons ****************************************************/
 
     public void nearestLessons(Lesson lesson, String date, String time) {
         String[] timeSplit = time.split(":");
@@ -213,7 +211,7 @@ public class LessonDetails extends AppCompatActivity implements AddLesson.AddLes
             String[] maybeNearestTime = str.split(":");
             if (hours + i != Integer.parseInt(maybeNearestTime[0]) && hours + i + 1 != Integer.parseInt(maybeNearestTime[0]) && hours + i < 21) {
                 nearestTime = hours + i + ":" + minutes;
-                Log.i("TAG-nearestTime", "))) " + " , " + nearestTime);
+                Log.i("TAG-nearestTime", nearestTime);
             } else i++;
 
         }//for
@@ -242,7 +240,6 @@ public class LessonDetails extends AppCompatActivity implements AddLesson.AddLes
 
     /****************************************** Edit Lesson ****************************************************/
 
-
     @Override
     public void editLesson(String subject, String topic, String date, String time, String id) {
         Lesson lesson = new Lesson(subject, topic, date, time, id, currentUsername); // create lesson
@@ -253,9 +250,6 @@ public class LessonDetails extends AppCompatActivity implements AddLesson.AddLes
             }
         });
     }
-
-
-
 
 
     /****************************************** to choose special date from Menu ****************************************************/

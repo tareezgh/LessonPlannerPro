@@ -60,12 +60,13 @@ public class EditLesson extends AppCompatDialogFragment {
 
         subject = view.findViewById(R.id.subject);
         topic = view.findViewById(R.id.topic);
-        pickDate = view.findViewById(R.id.pickDate);
-        dateText = view.findViewById(R.id.textViewDate);
+        pickDate = view.findViewById(R.id.pickDate); // button
+        dateText = view.findViewById(R.id.textViewDate); // text
 
-        pickTime = view.findViewById(R.id.pickTime);
-        timeText = view.findViewById(R.id.textviewTime);
+        pickTime = view.findViewById(R.id.pickTime); // button
+        timeText = view.findViewById(R.id.textviewTime); // text
 
+        // set information for specific lesson to edit
         subject.setText(lessonToEdit.getSubject());
         topic.setText(lessonToEdit.getTopic());
         dateText.setText(lessonToEdit.getDate());
@@ -90,7 +91,6 @@ public class EditLesson extends AppCompatDialogFragment {
         });
 
 /****************************************** date picker ****************************************************/
-
 
         pickDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,7 +120,6 @@ public class EditLesson extends AppCompatDialogFragment {
         };
 
 /****************************************** time picker ****************************************************/
-
 
         pickTime.setOnClickListener(new View.OnClickListener() {
             @Override

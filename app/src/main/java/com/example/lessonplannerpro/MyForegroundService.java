@@ -22,9 +22,11 @@ public class MyForegroundService extends Service {
     NotificationManager notificationManager;
     ZonedDateTime time;
     LocalDate lt;
+
     SharedPreferences sharedPreferences;
     Intent BroadcastIntent = new Intent();
-    boolean addedNewItem;
+
+    boolean addedNewItem; // if added new item in LessonDetails class
 
     @Override
     public void onCreate() {
@@ -35,14 +37,14 @@ public class MyForegroundService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        startForeground(1, sendNotification(""));
+        startForeground(1, sendNotification("Start service"));
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         new Thread(new Runnable() {
             @Override
             public void run() {
                 while (true) {
 
-                    /*********/
+                    /***** get local time ****/
                     lt = LocalDate.now();
                     time = ZonedDateTime.now();
                     ZonedDateTime IsraelDateTime = time.withZoneSameInstant(ZoneId.of("Asia/Jerusalem"));
@@ -50,20 +52,16 @@ public class MyForegroundService extends Service {
                     /*********/
 
                     addedNewItem = LessonDetails.addedNewItem;
-                    // if notification true send noti
+                    //  SP - if notification true then send
                     if (sharedPreferences.getBoolean("noti", true)) {
                         if (addedNewItem) {
                             BroadcastIntent.setAction("com.example.lessonplannerpro.CUSTOM_INTENT");
                             sendBroadcast(BroadcastIntent);
-                            Log.e("TAGGG",  "  Service");
                             sendNotification("New lesson added " + IsraelDateTime.getHour() + ":" + IsraelDateTime.getMinute());
-
                         }
                     }
 
-
-
-                    LessonDetails.addedNewItem = false;
+                    LessonDetails.addedNewItem = false; // reset
 //                    Log.e("TAG", addedNewItem + " addedNewItem Service");
 
                     try {
